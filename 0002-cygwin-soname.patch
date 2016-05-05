@@ -1,0 +1,52 @@
+--- origsrc/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_compress.1	2015-12-27 16:40:35.000000000 -0600
++++ src/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_compress.1	2016-05-05 13:04:27.701466300 -0500
+@@ -26,7 +26,7 @@ One of the following compression algorit
+ .RE
+ .TP
+ .BI -l
+-\fIlibtxc_dxtn.so\fP
++\fIcygtxc_dxtn.dll\fP
+ Path to an implementation of libtxc-dxtn
+ .TP
+ 
+--- origsrc/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_compress.c	2015-12-27 16:40:35.000000000 -0600
++++ src/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_compress.c	2016-05-05 13:04:27.706466900 -0500
+@@ -574,8 +574,12 @@ int main(int argc, char **argv)
+ 	GLenum dxt = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+ 
+ #ifdef ENABLE_RUNTIME_LINKING
++#ifdef __CYGWIN__
++	const char *library = "cygtxc_dxtn.dll";
++#else
+ 	const char *library = "libtxc_dxtn.so";
+ #endif
++#endif
+ 
+ 	int opt;
+ 	while((opt = getopt(argc, argv, "i:o:t:"
+--- origsrc/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_decompress.1	2015-12-27 16:40:35.000000000 -0600
++++ src/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_decompress.1	2016-05-05 13:04:27.708967200 -0500
+@@ -16,7 +16,7 @@ into TGA images.
+ \fIOUTFILE.tga\fP
+ .TP
+ .BI -l
+-\fIlibtxc_dxtn.so\fP
++\fIcygtxc_dxtn.dll\fP
+ Path to an implementation of libtxc-dxtn
+ .TP
+ 
+--- origsrc/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_decompress.c	2015-12-27 16:40:35.000000000 -0600
++++ src/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/s2tc_decompress.c	2016-05-05 13:04:27.711467500 -0500
+@@ -106,8 +106,12 @@ int main(int argc, char **argv)
+ 	unsigned char *buf;
+ 
+ #ifdef ENABLE_RUNTIME_LINKING
++#ifdef __CYGWIN__
++	const char *library = "cygtxc_dxtn.dll";
++#else
+ 	const char *library = "libtxc_dxtn.so";
+ #endif
++#endif
+ 
+ 	int opt;
+ 	while((opt = getopt(argc, argv, "i:o:"

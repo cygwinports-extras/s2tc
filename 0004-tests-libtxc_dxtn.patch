@@ -1,0 +1,22 @@
+The S3TC libtxc_dxtn is linked with -module
+
+--- origsrc/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/tests/test.sh	2015-12-27 16:40:35.000000000 -0600
++++ src/s2tc-f6ec862d7594e29ae80a6e49f66ad4c76cf09abc/tests/test.sh	2016-05-05 13:16:58.974365800 -0500
+@@ -170,7 +162,7 @@ if $use_external && which wine >/dev/nul
+ else
+ 	: ${use_compressonator:=false}
+ fi
+-if $use_external && [ -f /usr/lib/libtxc_dxtn.so ]; then
++if $use_external && [ -f /usr/lib/cygtxc_dxtn.dll ]; then
+ 	: ${use_libtxc_dxtn:=true}
+ else
+ 	: ${use_libtxc_dxtn:=false}
+@@ -235,7 +227,7 @@ for i in dxtfail floor_tread01_norm frac
+ 	S2TC_DITHER_MODE=FLOYDSTEINBERG S2TC_COLORDIST_MODE=$goodmetric S2TC_RANDOM_COLORS=32 S2TC_REFINE_COLORS=LOOP \
+ 	t "$i".tga "$i"-rand32-mrgb-l.dds bin/s2tc_compress -t $fourcc
+ 	if $use_libtxc_dxtn; then
+-		t "$i".tga "$i"-libtxc_dxtn.dds   bin/s2tc_compress -t $fourcc -l /usr/lib/libtxc_dxtn.so
++		t "$i".tga "$i"-libtxc_dxtn.dds   bin/s2tc_compress -t $fourcc -l /usr/lib/cygtxc_dxtn.dll
+ 		timing bin/s2tc_from_s3tc -i "$i"-libtxc_dxtn.dds -o "$i"-libtxc_dxtn-s2tc.dds
+ 		html "$i"-libtxc_dxtn-s2tc.dds
+ 	fi
