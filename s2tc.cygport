@@ -3,7 +3,10 @@ VERSION=1.0
 RELEASE=1.20151227gitf6ec862
 CATEGORY="Graphics"
 SUMMARY="S2TC texture compression"
-DESCRIPTION=
+DESCRIPTION="S2TC (Super Simple Texture Compression) is a patent-free texture
+compression algorithm designed to be compatible with existing S3TC decompressors.
+Also included is a libtxc_dxtn replacement that uses S2TC to compress and
+decompress textures, which can be directly used by Mesa/DRI."
 HOMEPAGE="https://github.com/divVerent/s2tc/wiki"
 commit=${RELEASE#*git}d7594e29ae80a6e49f66ad4c76cf09abc
 SRC_URI="https://github.com/divVerent/s2tc/archive/${commit}/s2tc-${commit}.tar.gz"
