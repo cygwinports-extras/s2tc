@@ -1,6 +1,6 @@
 NAME="s2tc"
 VERSION=1.0
-RELEASE=1.20151227gitf6ec862
+RELEASE=2.20151227gitf6ec862
 CATEGORY="Graphics"
 SUMMARY="S2TC texture compression"
 DESCRIPTION="S2TC (Super Simple Texture Compression) is a patent-free texture
@@ -18,20 +18,15 @@ PATCH_URI="
 	0004-tests-libtxc_dxtn.patch
 "
 
-PKG_NAMES="s2tc libtxc_dxtn libtxc_dxtn-devel"
+PKG_NAMES="s2tc"
 s2tc_REQUIRES="libtxc_dxtn"
-s2tc_CONTENTS="usr/bin/s2tc_* usr/share/man/man1/s2tc_*"
-libtxc_dxtn_CATEGORY="Libs"
-libtxc_dxtn_SUMMARY="${SUMMARY} library (runtime)"
-libtxc_dxtn_CONTENTS="usr/bin/cygtxc_dxtn.dll usr/share/doc/"
-libtxc_dxtn_devel_CATEGORY="Libs"
-libtxc_dxtn_devel_SUMMARY="${SUMMARY} library (development)"
-libtxc_dxtn_devel_REQUIRES="libGL-devel"
-libtxc_dxtn_devel_CONTENTS="
-	usr/include/txc_dxtn.h
-	usr/lib/libtxc_dxtn.dll.a
-	usr/lib/pkgconfig/txc_dxtn.pc
+s2tc_CONTENTS="
+	usr/bin/s2tc_*
+	usr/share/doc/
+	usr/share/man/man1/s2tc_*
 "
+
+CYGCONF_ARGS="--disable-lib"
 
 src_test() {
 	mkdir -p ${B}/tests
